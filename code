@@ -81,7 +81,6 @@ Else
 num = (100 * d1) + (10 * d2) + d3
 End If
 End If
-Print (num)
 End Sub
 
 Private Sub Form_Load()
