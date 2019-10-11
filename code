@@ -1,0 +1,112 @@
+Dim d1, d2, d3, gd1, gd2, gd3, guess, num, gued As Integer
+Private Sub Command1_Click()
+Dim count, wnggus As Integer
+count = 1
+wnggus = 0
+gued = Val(Text1.Text)
+If gued > 999 Or gued < 100 Then
+MsgBox ("Please enter the correct number of guesses :-")
+GoTo Ennd
+End If
+gd1 = Int(gued / 100)
+gd2 = Int((gued - (gd1 * 100)) / 10)
+gd3 = Int((gued - (gd1 * 100)) - (gd2 * 10))
+For count = 1 To 3 Step 1
+If count = 1 Then
+If gd1 = d1 Then
+Print ("X")
+ElseIf gd1 = d2 Or gd1 = d3 Then
+Print ("Y")
+Else
+wnggus = wnggus + 1
+End If
+ElseIf count = 2 Then
+If gd2 = d2 Then
+Print ("X")
+ElseIf gd2 = d1 Or gd2 = d3 Then
+Print ("Y")
+Else
+wnggus = wnggus + 1
+End If
+ElseIf count = 3 Then
+If gd3 = d3 Then
+Print ("X")
+ElseIf gd3 = d2 Or gd3 = d1 Then
+Print ("Y")
+Else
+wnggus = wnggus + 1
+End If
+End If
+Next count
+If wnggus = 3 Then
+Print ("Z")
+End If
+If gued = num Then
+MsgBox ("You have won!")
+Unload Me
+Else
+guess = guess + 1
+Label1.Caption = "Guess: " & guess
+Print ("--------------")
+End If
+If guess > 10 Then
+MsgBox ("You lose.The number was " & num)
+Unload Me
+End If
+Ennd:
+End Sub
+
+Private Sub Command2_Click()
+Randomize
+Form1.Cls
+d1 = 0
+d2 = 0
+d3 = 0
+gd1 = 0
+gd2 = 0
+gd3 = 0
+guess = 0
+num = 0
+d1 = Int(9 * Rnd() + 1)
+dtw:
+d2 = Int(9 * Rnd() + 1)
+If d2 = d1 Then
+GoTo dtw
+Else
+dth:
+d3 = Int(9 * Rnd() + 1)
+If d3 = d2 Or d3 = d1 Then
+GoTo dth
+Else
+num = (100 * d1) + (10 * d2) + d3
+End If
+End If
+Print (num)
+End Sub
+
+Private Sub Form_Load()
+Randomize
+d1 = 0
+d2 = 0
+d3 = 0
+gd1 = 0
+gd2 = 0
+gd3 = 0
+guess = 0
+num = 0
+d1 = Int(9 * Rnd() + 1)
+dtw:
+d2 = Int(9 * Rnd() + 1)
+If d2 = d1 Then
+GoTo dtw
+Else
+dth:
+d3 = Int(9 * Rnd() + 1)
+If d3 = d2 Or d3 = d1 Then
+GoTo dth
+Else
+num = (100 * d1) + (10 * d2) + d3
+End If
+End If
+Print (num)
+End Sub
